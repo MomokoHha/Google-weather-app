@@ -1,14 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
-.weather-app {
-  max-width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #bdb9b9da;
-  border-radius: 3px;
-}
 h1 {
   color: #1f0c0c;
   font-size: 24px;
@@ -29,4 +21,40 @@ li {
   line-height: 25px;
   margin: 0;
   padding: 0;
+}
+.d-flex strong {
+  font-family: Helvetica Neue, Arial, Noto Sans Myanmar UI, sans-serif;
+  font-weight: 400;
+  color: rgb(75, 10, 10);
+  font-size: 40px;
+  line-height: 1.5;
+  margin-left: -18px;
+}
+.d-flex small {
+  position: relative;
+  margin-left: -9px;
+  color: #607dad;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 6px;
+  padding-left: 6px;
+  vertical-align: top;
+}
+.weather-app-wrapper {
+  /* background-color: #a69292; */
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.weather-app {
+  padding: 20px;
+  border: 1px solid #bdb9b9da;
+  border-radius: 3px;
+}
+.over-view {
+  margin-bottom: 20px;
+}
+#icon {
+  margin-right: 16px;
 }
