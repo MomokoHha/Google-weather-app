@@ -22,6 +22,10 @@ li {
   margin: 0;
   padding: 0;
 }
+
+li:first-letter {
+  text-transform: capitalize;
+}
 .d-flex strong {
   font-family: Helvetica Neue, Arial, Noto Sans Myanmar UI, sans-serif;
   font-weight: 400;
@@ -57,7 +61,4 @@ li {
 }
 #icon {
   margin-right: 16px;
-}
-#description {
-  text-transform: capitalize;
 }
