@@ -58,3 +58,6 @@ li {
 #icon {
   margin-right: 16px;
 }
+#description {
+  text-transform: capitalize;
+}
