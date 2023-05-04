@@ -32,7 +32,8 @@ function displayTemperature(response) {
   cityElement.innerHTML = response.data.name;
 
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  fahrenheitTemperature = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = fahrenheitTemperature;
 
   let description = document.querySelector("#description");
   description.innerHTML = response.data.weather[0].description;
@@ -45,9 +46,17 @@ function displayTemperature(response) {
 
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 let apiKey = "a517e2f077fee2ef9b2aa7d6e87f83b4";
-let city = "Paris";
+let city = "Tokyo";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
 console.log(apiUrl);
