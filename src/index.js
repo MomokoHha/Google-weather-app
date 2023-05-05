@@ -32,8 +32,8 @@ function displayTemperature(response) {
   cityElement.innerHTML = response.data.name;
 
   let temperatureElement = document.querySelector("#temperature");
-  fahrenheitTemperature = Math.round(response.data.main.temp);
-  temperatureElement.innerHTML = fahrenheitTemperature;
+  fahrenheitTemperature = response.data.main.temp;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 
   let description = document.querySelector("#description");
   description.innerHTML = response.data.weather[0].description;
@@ -68,6 +68,32 @@ function handleSubmit(event) {
   search(cityInputElement.value);
   // console.log(cityInputElement.value);
 }
-search("New York");
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+search("New York");
+// --------------unit conversion----------
+function displayCelciusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  //remove the active class from the fahrenheit link
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let celciusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
+  // alert(celciusTemperature);
+  temperatureElement.innerHTML = Math.round(celciusTemperature);
+}
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", displayCelciusTemperature);
+
+let fahrenheitTemperature = null;
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  fahrenheitLink.classList.add("active");
+  celciusLink.classList.remove("active");
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);

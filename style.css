@@ -26,6 +26,9 @@ li {
 li:first-letter {
   text-transform: capitalize;
 }
+small a {
+  text-decoration: none;
+}
 .d-flex strong {
   font-family: Helvetica Neue, Arial, Noto Sans Myanmar UI, sans-serif;
   font-weight: 400;
@@ -36,7 +39,7 @@ li:first-letter {
 }
 .d-flex small {
   position: relative;
-  margin-left: -9px;
+  margin-left: 0px;
   color: #607dad;
   display: inline-block;
   font-size: 16px;
@@ -64,4 +67,9 @@ li:first-letter {
 }
 #icon {
   margin: -21px 3px auto -26px;
+}
+
+.active {
+  color: rgb(75, 10, 10);
+  cursor: default;
 }
