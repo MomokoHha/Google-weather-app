@@ -59,6 +59,9 @@ li:first-letter {
 .over-view {
   margin-bottom: 20px;
 }
+.form-control {
+  margin-bottom: 19px;
+}
 #icon {
   margin: -21px 3px auto -26px;
 }
