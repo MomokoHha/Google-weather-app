@@ -97,3 +97,30 @@ function displayFahrenheitTemperature(event) {
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+// -------forecast-------
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thur", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+                <div class="weather-forecast-date">${day}</div>
+                  <img
+                    src="https://openweathermap.org/img/wn/01d@2x.png"
+                    alt=""
+                    width="45px"
+                  />
+                  <div class="weather-forecast-temperature">
+                    <span class="max-temperature">38°</span>
+                    <span class="min-temperature">32°</span>
+                  </div>
+                
+        </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
