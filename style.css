@@ -73,3 +73,19 @@ small a {
   color: rgb(75, 10, 10);
   cursor: default;
 }
+
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+  color: black;
+}
+.weather-forecast-date {
+  font-size: 14px;
+  opacity: 0.6;
+}
+.weather-forecast-temperature {
+  font-size: 14px;
+}
+span.min-temperature {
+  opacity: 0.6;
+}
