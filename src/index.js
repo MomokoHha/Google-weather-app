@@ -25,9 +25,22 @@ function formatDate(timestamp) {
 
   return `${day} ${hours}:${minutes}`;
 }
+// function getForecast(coordinates) {
+//   console.log(coordinates);
+//   let apiKey = "a517e2f077fee2ef9b2aa7d6e87f83b4";
+//   let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+//   console.log(apiUrl);
+//   axios.get(apiUrl).then(displayForecast);
+// }
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "597c40c39084687093b091cd48b366f8";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function displayTemperature(response) {
-  console.log(response);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
 
@@ -54,6 +67,7 @@ function displayTemperature(response) {
   );
 
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 
 // --------search----------
@@ -98,26 +112,54 @@ function displayFahrenheitTemperature(event) {
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 // -------forecast-------
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(forecast);
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Thur", "Fri", "Sat", "Sun"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-                <div class="weather-forecast-date">${day}</div>
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+                <div class="weather-forecast-date">${formatDay(
+                  forecastDay.dt
+                )}</div>
+              
                   <img
-                    src="https://openweathermap.org/img/wn/01d@2x.png"
+                    src="https://openweathermap.org/img/wn/${
+                      forecastDay.weather[0].icon
+                    }@2x.png"
                     alt=""
                     width="45px"
                   />
                   <div class="weather-forecast-temperature">
-                    <span class="max-temperature">38°</span>
-                    <span class="min-temperature">32°</span>
+                    <span class="max-temperature">${Math.round(
+                      forecastDay.temp.max
+                    )}°</span>
+                    <span class="min-temperature">${Math.round(
+                      forecastDay.temp.min
+                    )}°</span>
                   </div>
                 
         </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
